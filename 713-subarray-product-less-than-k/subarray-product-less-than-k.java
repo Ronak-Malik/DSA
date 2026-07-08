@@ -1,3 +1,5 @@
+//sliding window approach 
+
 class Solution {
     public int numSubarrayProductLessThanK(int[] nums, int k) {
         int ans = 0;
