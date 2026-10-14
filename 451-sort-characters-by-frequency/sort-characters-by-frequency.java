@@ -1,3 +1,5 @@
+//hashmap + sorting approach instead of bucket sort 
+
 class Solution {
     public String frequencySort(String s) {
         HashMap<Character,Integer> map = new HashMap<>();
