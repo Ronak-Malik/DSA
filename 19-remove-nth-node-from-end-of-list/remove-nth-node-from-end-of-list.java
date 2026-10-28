@@ -8,35 +8,32 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+ //using fast and slow pointer pattern 
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        int length = 0;
-        ListNode temp = head;
-        while(temp != null){
-            length ++;
-            temp = temp.next;
+        //first we create a dummy node and head se phele  asssing krege 
+        ListNode dummy = new ListNode(0);
+        dummy.next = head ;
+
+        //ab dono fast and slow pointer phele dummy node pr rehege 
+        ListNode slow = dummy ;
+        ListNode fast = dummy ;
+
+        //ab ise fast pointer ko n kadam chalana hai 
+        for(int i =0; i<n; i++){
+            fast = fast.next;
         }
 
-        int pos = length - n;
-
-
-        if(head == null )return null;
-
-        if(pos == 0){
-            return head.next;
+        while(fast.next!=null){
+            slow = slow.next;
+            fast = fast.next;
         }
 
-        temp = head;
-        for(int i = 0; i<pos -1 ; i++){
-            if(temp == null || temp.next == null )return head;
-            temp = temp.next;
-        }
+        //agr null hogya tho mtlb slow pointer ab delete krne wale se phele hoga tho 
+        slow.next = slow.next.next ;
 
-        if(temp.next!=null){
-            temp.next = temp.next.next;
-        }
-
-        return head ;
+        return dummy.next; //mtlb head return krna hai and linekd list return hojaygi updated wali 
         
     }
 }
